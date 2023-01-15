@@ -1,60 +1,181 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application_1/widgets/Button.dart';
 
 void main() {
   runApp(App());
 }
 
-class App extends StatelessWidget{
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold (
-        backgroundColor: Color(0xFF181818),
+      home: Scaffold(
+        backgroundColor: const Color(
+            0xFF181818), //Color.fromRGBO => red, green, blue, opacity
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
 
           //EdgeInsets.all == Making spaces Top, Bottom, Left and Right
           //EdgeInsets.only == Making spaces one of the Top, Bottom, Left and Right that you choose
           //EdgeInsets.symmetric == allows you to specify vertical or horizontal padding
 
-
+          //we use column when we want to put things one under each other
+          //we use row when we want to put things next to each other
 
           child: Column(
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text('Hey, Selena',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w800
-                      ),
-                    ),
-                    Text('Welcome back',
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
-                          fontSize: 18,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 80,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .end, //MainAxis of the row is on the horizontal direction https://flutteragency.com/what-is-diffrence-between-crossaxisalignment-and-mainaxisalignment/
+                //MainAxis of the column is on the vertical direction
+                children: [
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .end, //CrossAxis of the row is on the vertical direction https://flutteragency.com/what-is-diffrence-between-crossaxisalignment-and-mainaxisalignment/
+                      //CrossAxis of the column is on the horizontal direction
+                      children: [
+                        const Text(
+                          'Hey, Selena',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w800),
                         ),
-                      ),
-                    ]
+                        Text(
+                          'Welcome back',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 18,
+                          ),
+                        ),
+                      ]),
+                ],
+              ),
+              const SizedBox(
+                height: 120,
+              ),
+              Text(
+                'Total Balance',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white.withOpacity(0.8),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Text(
+                '\$5 194 482', //$5 194 -> unavailable. Rather do /$ instead
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Button(
+                    text: 'Transfer',
+                    bgColor: Color(0xFFF1B33B),
+                    textColor: Colors.black,
+                  ),
+                  Button(
+                    text: 'Request',
+                    bgColor: Color(0xFF1F2123),
+                    textColor: Colors.white,
                   ),
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Wallets',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'View All',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1F2123),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Euro',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              const Text(
+                                '6 428',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'EUR',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
-        
-        ),
-      );
-  
+      ),
+    );
+
+    // padding == widget that gives some space between boxes to boxes
     // add the comments(,) at the end whenever you create a class
     // this is the root of our application.
     // the widget that the root of the application should return has to be one of the 2 options
@@ -65,3 +186,4 @@ class App extends StatelessWidget{
 //extending to StatelessWidget, u must implement the 'build' method and whatever this method returns is what is going to show up on the screen
 // build method : builds UI of ur widget
 
+//Show Code Actions => Ctrl + Dot(.)
