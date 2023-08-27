@@ -131,9 +131,9 @@ class App extends StatelessWidget {
                   icon: Icons.euro_rounded,
                   isInverted: false,
                 ),
+                // adjusts position of the widget. must write Transform.translate above
                 Transform.translate(
-                  offset: const Offset(0,
-                      -20), // adjusts position of the widget. must write Transform,translate above
+                  offset: const Offset(0, -20),
                   child: const CurrencyCard(
                     name: 'Bitcoin',
                     code: 'BTC',
